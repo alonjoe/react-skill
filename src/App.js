@@ -1,25 +1,37 @@
-import logo from './logo.svg';
+import React from "react";
 import './App.css';
+import { Route } from "react-router-dom";
+import styled from "styled-components";
+
+import Header from "./Header";
+import Main from "./Main";
+import Edit from "./Edit";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Wrap>
+      <Header/>
+      <Container>
+        <Route path={"/"} exact>
+          <Main/>
+        </Route>
+
+        <Route path={"/edit"}>
+          <Edit/>
+        </Route>
+      </Container>
+    </Wrap>
   );
 }
 
 export default App;
+
+const Wrap = styled.div`
+  /* height: 100vh; */
+  width: 100vw;
+`;
+
+const Container = styled.div`
+  margin: 0 auto;
+  width: 100vw;
+`;
