@@ -1,10 +1,13 @@
 import React  from "react";
 import styled from "styled-components";
+import { useSelector } from "react-redux";
 
 import Card from "./Card";
 import AddMode from "./AddMode";
 
 const Main = (props) => {
+
+  const word_list = useSelector((state) => state.word.list);
 
   return (
     <>      

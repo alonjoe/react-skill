@@ -1,8 +1,9 @@
 import React  from "react";
-import { useHistory } from "react-router-dom";
-import styled from "styled-components";
 import './App.css';
-
+import styled from "styled-components";
+import { useHistory } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { createWord } from "./redux/modules/word";
 
 const Edit = (props) => {
 
@@ -10,7 +11,12 @@ const Edit = (props) => {
   const my_word = React.useRef();
   const my_mean = React.useRef();
   const my_ex = React.useRef();
+  const dispatch = useDispatch();
   
+  const AddWordList = () => {
+    dispatch(createWord({ my_word: my_word.current.value, my_mean: my_mean.current.value, my_ex: my_ex.current.value }))
+  }
+
   return (
     <Container>
       <Editor>
@@ -27,7 +33,7 @@ const Edit = (props) => {
           <label>예시</label>
           <input ref={my_ex}/>
         </div>
-        <button>추가하기</button>
+        <button onClick={() => {AddWordList(); history.goBack();} }>추가하기</button>
       </Editor>
       <StlyeBtn onClick={() => { history.push("/") }}>🏠</StlyeBtn>
     </Container>

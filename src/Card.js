@@ -1,5 +1,5 @@
 import React  from "react";
-// import styled from "styled-components";
+import styled from "styled-components";
 import './App.css';
 
 const Card = (props) => {
@@ -8,9 +8,13 @@ const Card = (props) => {
     <div className="container">
       <p>단어</p>
       <p>뜻</p>
-      <p>예시</p>
+      <Ex>예시</Ex>
     </div>
   )
 }
 
 export default Card;
+
+const Ex = styled.p`
+  color: blue;
+`;
