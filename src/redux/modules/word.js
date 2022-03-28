@@ -10,7 +10,7 @@ export function createWord(word) {
 }
 
 const initialState = {
-  list: [{my_word: "", my_mean: "", my_ex: "" }]
+  list: []
 }
 
 // Reducer

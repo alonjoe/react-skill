@@ -2,24 +2,26 @@ import React  from "react";
 import styled from "styled-components";
 import { useSelector } from "react-redux";
 
-import Card from "./Card";
 import AddMode from "./AddMode";
 
 const Main = (props) => {
 
-  const word_list = useSelector((state) => state.word.list);
-
+  const word_list = useSelector((state) => state.word.list)
+  console.log(word_list);
   return (
     <>      
       <div>
         <Box className="clearfix">
-          <Card/>
-          <Card/>
-          <Card/>
-          <Card/>
-          <Card/>
-          <Card/>
-          <Card/>
+          
+            {word_list.map((value, i) => {
+              return (
+                <div className="container" key={value.my_word + i}>
+                  <p>{value.my_word}</p>
+                  <p>{value.my_mean}</p>
+                  <Ex>{value.my_ex}</Ex>
+                </div>
+              );
+            })}
         </Box>
       </div>
       <AddMode/>
@@ -36,4 +38,8 @@ const Box = styled.div`
   padding-top: 130px;
   /* border: 1px solid #000; */
   box-sizing: border-box;
+`;
+
+const Ex = styled.p`
+  color: blue;
 `;
