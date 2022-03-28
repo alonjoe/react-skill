@@ -11,8 +11,7 @@ const Main = (props) => {
   return (
     <>      
       <div>
-        <Box className="clearfix">
-          
+        <Box className="clearfix">          
             {word_list.map((value, i) => {
               return (
                 <div className="container" key={value.my_word + i}>

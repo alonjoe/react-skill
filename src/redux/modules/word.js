@@ -1,10 +1,11 @@
 // word.js
 import {db} from '../../firebase';
 import { collection, doc, getDoc, getDocs, addDoc, updateDoc, deleteDoc } from "firebase/firestore";
+import { async } from '@firebase/util';
 
 // Actions
-const CREATE = 'word/CREATE';
 const LOAD = 'word/LOAD';
+const CREATE = 'word/CREATE';
 
 // Action Creators
 export function loadWord(word_list) {
@@ -40,6 +41,19 @@ export const loadWordFB = () => {
     dispatch(loadWord(word_list));
   }
 }
+
+export const addWordFB = (word) => {
+  return async function (dispatch) {
+    const docRef = await addDoc(collection(db, "vocabulary"), word);
+    // const _word = await getDoc(docRef);
+    const word_data = {id: docRef.id, ...word};
+    console.log(word_data);
+
+    dispatch(createWord(word_data));
+  }
+}
+
+
 
 // Reducer
 export default function reducer(state = initialState, action = {}) {

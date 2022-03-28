@@ -3,7 +3,7 @@ import './App.css';
 import styled from "styled-components";
 import { useHistory } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { createWord } from "./redux/modules/word";
+import { createWord, addWordFB } from "./redux/modules/word";
 
 const Edit = (props) => {
 
@@ -14,7 +14,8 @@ const Edit = (props) => {
   const dispatch = useDispatch();
   
   const AddWordList = () => {
-    dispatch(createWord({ my_word: my_word.current.value, my_mean: my_mean.current.value, my_ex: my_ex.current.value }))
+    // dispatch(createWord({ my_word: my_word.current.value, my_mean: my_mean.current.value, my_ex: my_ex.current.value }));
+    dispatch(addWordFB({ my_word: my_word.current.value, my_mean: my_mean.current.value, my_ex: my_ex.current.value }));
   }
 
   return (
