@@ -3,11 +3,14 @@ import styled from "styled-components";
 import { useSelector } from "react-redux";
 
 import AddMode from "./AddMode";
+import { BsX } from "react-icons/bs";
+import { CgArrowUpR } from "react-icons/cg";
 
 const Main = (props) => {
 
   const word_list = useSelector((state) => state.word.list)
   console.log(word_list);
+  
   return (
     <>      
       <div>
@@ -15,8 +18,15 @@ const Main = (props) => {
             {word_list.map((value, i) => {
               return (
                 <div className="container" key={value.my_word + i}>
-                  <p>{value.my_word}</p>
+                  <Title>{value.my_word}</Title>
+                  <BsX onClick={() => {}}
+                    style={{
+                      position: "absolute", top: "32px", right: "17px",
+                      border: "none", background: "none", fontSize: "20px", cursor: "pointer"
+                    }}/>
+                  <StyleSpan>뜻</StyleSpan>
                   <p>{value.my_mean}</p>
+                  <StyleSpan>예시</StyleSpan>
                   <Ex>{value.my_ex}</Ex>
                 </div>
               );
@@ -24,6 +34,9 @@ const Main = (props) => {
         </Box>
       </div>
       <AddMode/>
+      <CgArrowUpR style={{position: "fixed", bottom: "100px", right: "36px", fontSize: "45px", cursor: "pointer"}}
+        onClick={() => { window.scrollTo({top: "0", left: "0", behavior: "smooth"}) }}
+      />
     </>
   )
 }
@@ -37,8 +50,25 @@ const Box = styled.div`
   padding-top: 130px;
   /* border: 1px solid #000; */
   box-sizing: border-box;
+  p {
+    font-size: 15px;
+  }
+`;
+
+const Title = styled.span`
+  font-weight: 700;
+  font-size: 32px;
+  padding-bottom: 10px;
+  display: block;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #ccc;
 `;
 
 const Ex = styled.p`
   color: blue;
+`;
+
+const StyleSpan = styled.span`
+  font-size: 12px;
+  color: grey;
 `;

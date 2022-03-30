@@ -3,16 +3,15 @@ import { useHistory } from "react-router-dom";
 import styled from "styled-components";
 
 
-
 const Header = () => {
 
   const history = useHistory();
   return (
     <StyleHead>
       <h1 style={{textAlign: "center"}}><span
-      style={{ cursor: "pointer", color: "rgb(118, 118, 118)" }}
+      style={{ cursor: "pointer", color: "#000" }}
       onClick={() => { history.push("/") }}
-      >영단어 공부장</span></h1>
+      >my dictionary</span></h1>
     </StyleHead>
   )
 }
@@ -20,9 +19,13 @@ const Header = () => {
 export default Header;
 
 const StyleHead = styled.div`
-  border-bottom: 1px solid #000;
+  border-bottom: 1px solid #ccc;
   position: fixed;
   width: 100%;
   background: #fff;
   z-index: 1;
+
+  h1 {
+    margin: 30px 0;
+  }
 `;

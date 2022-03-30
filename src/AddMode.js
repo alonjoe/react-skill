@@ -3,6 +3,9 @@ import { useHistory } from "react-router-dom";
 import styled from "styled-components";
 import './App.css';
 
+import { BsPencilSquare } from "react-icons/bs";
+
+
 const AddMode = (props) => {
 
   const history = useHistory();
@@ -11,7 +14,7 @@ const AddMode = (props) => {
     <StyleEdit>
       <button onClick={() => {
         history.push("/edit");
-      }}>📝</button>
+      }}><BsPencilSquare style={{color: "#000"}}/></button>
     </StyleEdit>
   )
 }
@@ -22,7 +25,7 @@ const StyleEdit = styled.div`
   button {
     position: fixed;
     bottom: 30px;
-    right: 20px;
+    right: 30px;
     font-size: 45px;
     font-weight: 700;
     color: skyblue;
@@ -31,7 +34,7 @@ const StyleEdit = styled.div`
     cursor: pointer;
     transition: 0.1s;
   }
-  button:hover {
-    transform: scale(1.2);
-  }
+  /* button:hover {
+    transform: scale(1.1);
+  } */
 `;

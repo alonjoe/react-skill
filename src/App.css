@@ -24,15 +24,21 @@
   margin-right: 5%;
   margin-bottom: 30px;
   height: 250px;
-  /* background: skyblue; */
+  background: #fff;
+  /* opacity: 0.5; */
   /* border: 1px solid #ccc; */
-  color: rgb(118, 118, 118);
+  color: rgb(44, 44, 44);
   border-radius: 20px;
   padding: 20px;
   box-sizing: border-box;
   box-shadow: 0px 7px 10px #ccc;
   position: relative;
+  /* transition: 0.1s; */
 }
+
+/* .container:hover {
+  
+} */
 
 .container:nth-child(3n) {
   margin-right: 0;

@@ -5,6 +5,8 @@ import { useHistory } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { createWord, addWordFB } from "./redux/modules/word";
 
+import { VscBook } from "react-icons/vsc";
+
 const Edit = (props) => {
 
   const history = useHistory();
@@ -34,9 +36,11 @@ const Edit = (props) => {
           <label>예시</label>
           <input ref={my_ex}/>
         </div>
-        <button onClick={() => {AddWordList(); history.goBack();} }>추가하기</button>
+        <button
+          style={{cursor: "pointer"}}
+          onClick={() => {AddWordList(); history.goBack();} }>추가하기</button>
       </Editor>
-      <StlyeBtn onClick={() => { history.push("/") }}>🏠</StlyeBtn>
+      <StlyeBtn onClick={() => { history.push("/") }}><VscBook/></StlyeBtn>
     </Container>
   )
 }
@@ -55,6 +59,7 @@ const Container = styled.div`
 const Title = styled.h2`
   text-align: center;
   font-size: 20px;
+  color: #000;
 `;
 
 const Editor = styled.div`
@@ -87,23 +92,27 @@ const Editor = styled.div`
     text-align: center;
     margin: 20px auto;
     display: block;
-    
+    border: none;
+    transition: 0.1s;
+    &:hover {
+      background: #ddd;
+    }
   }
 `;
 
 const StlyeBtn = styled.button`
   position: fixed;
-  bottom: 40px;
-  right: 40px;
-  font-size: 50px;
+  bottom: 30px;
+  right: 50px;
+  font-size: 55px;
   font-weight: 700;
-  color: skyblue;
+  color: #000;
   background: #fff;
   border: none;
   cursor: pointer;
   transition: 0.1s;
 
-  &:hover {
+  /* &:hover {
     transform: scale(1.1);
-  }
+  } */
 `;
