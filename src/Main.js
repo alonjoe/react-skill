@@ -1,25 +1,37 @@
-import React  from "react";
+import React, { useEffect }  from "react";
 import styled from "styled-components";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import AddMode from "./AddMode";
 import { BsX } from "react-icons/bs";
 import { CgArrowUpR } from "react-icons/cg";
+import { FaCheck } from "react-icons/fa";
+import { deleteWordFB, updateWordFB } from "./redux/modules/word";
 
 const Main = (props) => {
 
-  const word_list = useSelector((state) => state.word.list)
-  console.log(word_list);
+  const dispatch = useDispatch();
+  const word_list = useSelector((state) => state.word.list);
+  // console.log(word_list);
   
+
+
   return (
     <>      
       <div>
         <Box className="clearfix">          
             {word_list.map((value, i) => {
+              console.log(value);
               return (
-                <div className="container" key={value.my_word + i}>
+                <Card completed={value.completed} className="container" key={value.my_word + i}>
                   <Title>{value.my_word}</Title>
-                  <BsX onClick={() => {}}
+                  <FaCheck onClick={() => { dispatch(updateWordFB(value)) }}
+                    style={{
+                      position: "absolute", top: "35px", right: "37px", fontSize: "13px", cursor: "pointer"
+                    }}/>
+                  <BsX onClick={() => {
+                    dispatch(deleteWordFB(value.id));    //word_list[i].id
+                  }}
                     style={{
                       position: "absolute", top: "32px", right: "17px",
                       border: "none", background: "none", fontSize: "20px", cursor: "pointer"
@@ -28,7 +40,7 @@ const Main = (props) => {
                   <p>{value.my_mean}</p>
                   <StyleSpan>예시</StyleSpan>
                   <Ex>{value.my_ex}</Ex>
-                </div>
+                </Card>
               );
             })}
         </Box>
@@ -42,6 +54,10 @@ const Main = (props) => {
 }
 
 export default Main;
+
+const Card = styled.div`
+  background: ${(props) => props.completed ? "lightgreen" : "#fff" }
+`;
 
 const Box = styled.div`
 

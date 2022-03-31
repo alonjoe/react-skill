@@ -14,7 +14,7 @@ import Edit from "./Edit";
 function App() {
   
   const dispatch = useDispatch();
-  React.useEffect(async() => {
+  React.useEffect(() => {
     // console.log(db);
     
     dispatch(loadWordFB());

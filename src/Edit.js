@@ -17,7 +17,8 @@ const Edit = (props) => {
   
   const AddWordList = () => {
     // dispatch(createWord({ my_word: my_word.current.value, my_mean: my_mean.current.value, my_ex: my_ex.current.value }));
-    dispatch(addWordFB({ my_word: my_word.current.value, my_mean: my_mean.current.value, my_ex: my_ex.current.value }));
+    dispatch(addWordFB({ my_word: my_word.current.value, my_mean: my_mean.current.value, my_ex: my_ex.current.value, completed: false }));
+    history.goBack();
   }
 
   return (
@@ -38,7 +39,7 @@ const Edit = (props) => {
         </div>
         <button
           style={{cursor: "pointer"}}
-          onClick={() => {AddWordList(); history.goBack();} }>추가하기</button>
+          onClick={() => {AddWordList()} }>추가하기</button>
       </Editor>
       <StlyeBtn onClick={() => { history.push("/") }}><VscBook/></StlyeBtn>
     </Container>
